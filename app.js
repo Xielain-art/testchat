@@ -14,9 +14,8 @@ app.use('/', router)
 
 const server = http.createServer(app)
 const io = new Server(server)
-
+let counter = 0
 io.on('connection', (socket) => {
-    let counter = 0
     socket.broadcast.emit('user connected', 'user connected')
     socket.on('disconnect', () => {
         console.log('user disconnected')
