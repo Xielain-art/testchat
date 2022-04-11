@@ -96,6 +96,7 @@
         item.textContent = msg
         messages.appendChild(item)
         localStorage.setItem(`message ${counter}`, msg)
+        counter++
         window.scrollTo(0, document.body.scrollHeight)
     })
 
