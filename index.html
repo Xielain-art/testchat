@@ -81,7 +81,7 @@
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         if (input.value) {
-            socket.emit('chat message', `${userName.value} ${input.value}`)
+            socket.emit('chat message', `${userName.value}: ${input.value}`)
             input.value = ''
         }
     })
