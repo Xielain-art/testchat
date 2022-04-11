@@ -65,6 +65,8 @@
       action="">
     <input id="input"
            autocomplete="off"/>
+    <input id="username"
+           autocomplete="off" placeholder="Введите имя"/>
     <button>Send</button>
 </form>
 <script src="/socket.io/socket.io.js"></script>
@@ -74,11 +76,12 @@
     let messages = document.getElementById('messages')
     let form = document.getElementById('form')
     let input = document.getElementById('input')
+    let userName = document.getElementById('username')
 
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         if (input.value) {
-            socket.emit('chat message', input.value)
+            socket.emit('chat message', `${userName.value} ${input.value}`)
             input.value = ''
         }
     })
