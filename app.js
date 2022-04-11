@@ -15,17 +15,17 @@ app.use('/', router)
 const server = http.createServer(app)
 const io = new Server(server)
 
-io.on('connection', (socket => {
+io.on('connection', (socket) => {
+    let counter = 0
     socket.broadcast.emit('user connected', 'user connected')
     socket.on('disconnect', () => {
         console.log('user disconnected')
     })
     socket.on('chat message', (msg) => {
-        io.emit('chat message', msg)
+        io.emit('chat message', {msg, counter})
     })
-
-}))
-
+    counter++
+})
 const start = () => {
     try {
         server.listen(PORT, () => {
